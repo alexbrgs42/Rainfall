@@ -145,7 +145,7 @@ That means we need to target the 4th position and put in it 64. Our command shou
 echo -e "\x8c\x98\x04\x08%60c%4\$n" | ./level3
 ```
 
-Where we have first : `\x8c\x98\x04\x08` the address that is 4 bytes long. Then `%60c` 60 more characters to bring the total to 64 as needed. And finally use `%n` (prints out how many characters were written so far) in combination with the `4$` specifier to target the 4th position in the stack : `%4\$n` (we need to escape the `$` symbol as we are not trying to read an environment variable.
+Where we have first : `\x8c\x98\x04\x08` the address that is 4 bytes long. Then `%60c` 60 more characters to bring the total to 64 as needed. And finally use `%n` (prints out how many characters were written so far) in combination with the `4$` specifier to target the 4th position in the stack : `%4\$n` we need to escape the `$` symbol as we are not trying to read an environment variable.
 
 And of course we maintain the connection with the shell using `cat` :
 

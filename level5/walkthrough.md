@@ -51,7 +51,7 @@ The goal is probably to use a format string exploit to launch the `o` function.
 
 We cannot directly change the return address of main to make it point to the `o` function since there is a call to `exit` and no call to `ret` 
 
-When the program calls `exit` or `printf` it does not directly jump to the function itself : it jumps to `printf@plt` or `exit@plt`, `plt` stands for “P**rocedure Linkage Table**” :
+When the program calls `exit` or `printf` it does not directly jump to the function itself : it jumps to `printf@plt` or `exit@plt`, `plt` stands for “**Procedure Linkage Table**” :
 
 > The Procedure Linkage Table (PLT) is a mechanism used in dynamically linked programs to facilitate function calls to external libraries, such
 as libc. When a program makes a function call to a dynamically linked function (e.g., `printf`), the code in the PLT is responsible
@@ -95,7 +95,7 @@ level5@RainFall:~$ echo -e "\x38\x98\x04\x08AAAA%x %x %x %x %x %x %x %x %x %x %x
 8AAAA200 b7fd1ac0 b7ff37d0 8049838 41414141 25207825 78252078 20782520 25207825 78252078 20782520 25207825
 ```
 
-Our payload appears in the 4th position (starting from 0), that’s the one we need to change to `o`'s address (`0x080484a4`, or in decimal : **134513828**). 
+Our payload appears in the 4th position, that’s the one we need to change to `o`'s address (`0x080484a4`, or in decimal : **134513828**). 
 
 We also need to subtract the size of the address (4) so the number of characters we need to write is **134513824.**
 

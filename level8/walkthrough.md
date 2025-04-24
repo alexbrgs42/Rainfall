@@ -172,7 +172,7 @@ int __cdecl main(int argc, const char **argv, const char **envp)
       service = (int)strdup(v6);
     if ( !memcmp(s, "login", 5u) )
     {
-      if ( *((_DWORD *)auth + 8) )
+      if ( *((_DWORD *)auth + 32) )
         system("/bin/sh");
       else
         fwrite("Password:\n", 1u, 0xAu, stdout);
